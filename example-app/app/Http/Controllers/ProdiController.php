@@ -13,7 +13,7 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $prodi = Prodi::all(); // select * from fakultas
+        $prodi = Prodi::all();
         return view('prodi.index')
             ->with('prodi', $prodi);
     }
@@ -25,7 +25,6 @@ class ProdiController extends Controller
     {
         $fakultas = Fakultas::all();
         return view('prodi.create')->with('fakultas', $fakultas);
-
     }
 
     /**
@@ -36,16 +35,17 @@ class ProdiController extends Controller
         // dd($request);
         // validasi form
         $val = $request->validate([
-            'nama' => "required|unique:fakultas",
+            'nama' => "required|unique:prodis",
             'singkatan' => "required|max:4",
             'fakultas_id' => "required"
         ]);
 
-        // simpan ke tabel fakultas
+        // simpan ke tabel prodis
         Prodi::create($val);
 
-        // redirect ke halaman fakultas 
+        // redirect ke halaman list prodi
         return redirect()->route('prodi.index')->with('success', $val['nama'] . ' berhasil disimpan');
+
     }
 
     /**

@@ -11,10 +11,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('fakultas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama', 45);
-            $table->string('singkatan', 4);
-            $table->timestamps();
+            $table->id(); // id integer autoincrement (1, 2, 3, dst)
+            $table->String('nama', 45);
+            $table->String('singkatan', 4);
+            $table->timestamps(); // created at and updated at
         });
     }
 
