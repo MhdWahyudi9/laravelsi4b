@@ -1,22 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Program Studi</title>
-</head>
-<body>
-    <h1>UMDP</h1>
-    <h2>Fakultas</h2>
-    <ul>
-    @foreach ($prodi as $item)
-        <li>{{$item ["nama"]}} <br>
-            {{$item ["singkatan"]}}
-            {{$item ["Fakultas"] ["nama"]}}</li>
-        
-    @endforeach
-    </ul>
+@extends('layout.main')
+
+@section('title', 'Prodi')
     
-</body>
-</html>
+@section('content')
+    <h1>UMDP</h1>
+    <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Program Studi</h4>
+                  <p class="card-description">
+                  List data program studi
+                  </p>
+                  {{-- tombol tambah --}}
+                  <a href="{{ route('prodi.create') }}" class="btn btn-rounded btn-primary">tambah</a>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Nama program studi</th>
+                          <th>Singkatan</th>
+                          <th>Nama Fakultas
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($prodi as $item)
+                            <tr>
+                                <td>{{ $item["nama"] }} 
+                                <td>{{ $item["singkatan"] }} </td>
+                                <td> {{ $item["fakultas"] ["nama"] }}</td>
+                            </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>
+
+@if (session('success'))
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    Swal.fire({
+    title: "Sukses",
+    text: "{{ session('success') }}",
+    icon: "success"
+  });
+  </script>
+@endif
+
+@endsection

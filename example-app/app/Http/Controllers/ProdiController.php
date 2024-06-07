@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prodi;
+use App\Models\Fakultas;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -12,7 +13,7 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $prodi = Prodi::all();
+        $prodi = Prodi::all(); // select * from fakultas
         return view('prodi.index')
             ->with('prodi', $prodi);
     }
@@ -22,7 +23,9 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        //
+        $fakultas = Fakultas::all();
+        return view('prodi.create')->with('fakultas', $fakultas);
+
     }
 
     /**
@@ -30,13 +33,25 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // validasi form
+        $val = $request->validate([
+            'nama' => "required|unique:fakultas",
+            'singkatan' => "required|max:4",
+            'fakultas_id' => "required"
+        ]);
+
+        // simpan ke tabel fakultas
+        Prodi::create($val);
+
+        // redirect ke halaman fakultas 
+        return redirect()->route('prodi.index')->with('success', $val['nama'] . ' berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(prodi $prodi)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -44,7 +59,7 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(prodi $prodi)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -52,7 +67,7 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, prodi $prodi)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -60,7 +75,7 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(prodi $prodi)
+    public function destroy(Prodi $prodi)
     {
         //
     }

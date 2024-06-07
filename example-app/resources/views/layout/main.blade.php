@@ -9,13 +9,13 @@
   {{-- yield dapat merubah sesuai dengan --}}
   <title>@yield('title')</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{url('../../vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{url('../../vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="{{url('../../css/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="{{url('../../images/favicon.png')}}" />
 </head>
 
 <body>
@@ -34,16 +34,29 @@
             <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('fakultas')}}">
+            <i class="mdi mdi-bank menu-icon"></i>
+            <span class="menu-title">Fakultas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('prodi')}}">
+            <i class="mdi mdi-view-quilt menu-icon"></i>
+            <span class="menu-title">Program Studi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url('mahasiswa')}}">
+            <i class="mdi mdi-palette menu-icon"></i>
+            <span class="menu-title">Mahasiswa</span>
+          </a>
+        </li>
         <li class="nav-item sidebar-category">
           <p>Components</p>
           <span></span>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-            <i class="mdi mdi-palette menu-icon"></i>
-            <span class="menu-title">UI Elements</span>
-            <i class="menu-arrow"></i>
-          </a>
+        <li >
           <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
@@ -121,8 +134,8 @@
             <span class="mdi mdi-menu"></span>
           </button>
           <div class="navbar-brand-wrapper">
-            <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logo.svg" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{url('../../images/logo.svg')}}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{url('../../images/logo-mini.svg')}}" alt="logo"/></a>
           </div>
           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
           <ul class="navbar-nav navbar-nav-right">
@@ -138,7 +151,7 @@
                 <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
+                      <img src="{{url('../../images/faces/face4.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -150,7 +163,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
+                      <img src="{{url('../../images/faces/face2.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
@@ -162,7 +175,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                      <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
+                      <img src="{{url('../../images/faces/face2.jpg')}}" alt="image" class="profile-pic">
                   </div>
                   <div class="preview-item-content flex-grow">
                     <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
@@ -238,7 +251,7 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                <img src="../../images/faces/face5.jpg" alt="profile"/>
+                <img src="{{url('../../images/faces/face5.jpg')}}" alt="profile"/>
                 <span class="nav-profile-name">Eleanor Richardson</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
